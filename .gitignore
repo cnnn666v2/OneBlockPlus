@@ -2,6 +2,7 @@
 .classpath
 .gitattributes
 .project
+.idea
 /bin
 /target
 /lib
