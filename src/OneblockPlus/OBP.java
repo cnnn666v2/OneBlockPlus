@@ -30,7 +30,7 @@ public class OBP extends PlaceholderExpansion {
     }
     @Override
     public String getAuthor() {
-        return "MrMarL";
+        return "Cnnn666";
     }
     @Override
     public String getIdentifier() {
@@ -42,7 +42,7 @@ public class OBP extends PlaceholderExpansion {
     }
     @Override
     public String getVersion() {
-        return "1.3.0";
+        return "1.0.0";
     }
     @Override
     public String onRequest(OfflinePlayer p, String identifier) {
@@ -118,7 +118,7 @@ public class OBP extends PlaceholderExpansion {
         }
         // %OB_ver%
         if (identifier.equals("ver")) {
-            return "1.3.0";
+            return "1.0.0";
         }
         return null; 
     }

@@ -1,6 +1,7 @@
 // Copyright © 2025 MrMarL. The MIT License (MIT).
 package OneblockPlus;
 
+import OneblockPlus.Stats.Health;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
@@ -72,9 +73,9 @@ public class Oneblock extends JavaPlugin {
 
     World wor, leavewor;
     int x = 0, y = 0, z = 0, sto = 100, max_players_team = 0;
-    boolean il3x3 = false, rebirth = false, autojoin = false;
+    boolean il3x3 = false, rebirth = true, autojoin = false;
     boolean droptossup = true, physics = false;
-    boolean lvl_bar_mode = false, chat_alert = false, particle = true;
+    boolean lvl_bar_mode = false, chat_alert = true, particle = true;
     boolean allow_nether = true, protection = false;
     boolean saveplayerinventory = false;
     boolean PAPI = false;
@@ -82,7 +83,7 @@ public class Oneblock extends JavaPlugin {
     boolean Border = true;
     boolean CircleMode = true;
     boolean UseEmptyIslands = true;
-    boolean Progress_bar = false;
+    boolean Progress_bar = true;
     BarColor Progress_color;
     String TextP = "";
 
@@ -408,7 +409,7 @@ public class Oneblock extends JavaPlugin {
         final PlayerInfo inf = PlayerInfo.get(plID);
         Level lvl_inf = Level.get(inf.lvl);
         if (++inf.breaks >= inf.getNeed()) {
-            lvl_inf = inf.lvlup();
+            lvl_inf = inf.lvlup(ponl);
             if (Progress_bar) inf.bar.setColor(lvl_inf.color);
             if (chat_alert) ponl.sendMessage(ChatColor.translateAlternateColorCodes('&', lvl_inf.name));
         }
@@ -703,6 +704,7 @@ public class Oneblock extends JavaPlugin {
                 PlayerInfo plp = PlayerInfo.get(PlId);
                 plp.removeBar(pl);
                 plp.removeUUID(uuid);
+                Health.setMaxHealth(pl, 20);
 
                 if (!saveplayerinventory) pl.getInventory().clear();
 
@@ -1080,7 +1082,7 @@ public class Oneblock extends JavaPlugin {
                                 "  ▄▄    ▄▄\n" +
                                 "█    █  █▄▀\n" +
                                 "▀▄▄▀ █▄▀\n" +
-                                "Created by MrMarL\nPlugin version: v1.3.3\n" +
+                                "Created by MrMarL\nPlugin version: v1.0.0\n" +
                                 "Server version: " + (superlegacy ? "super legacy " : (legacy ? "legacy " : "")) + "1." + XMaterial.getVersion() + ".X");
                 return true;
             }

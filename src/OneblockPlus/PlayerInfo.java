@@ -1,5 +1,6 @@
 package OneblockPlus;
 
+import OneblockPlus.Stats.Health;
 import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
@@ -23,9 +24,10 @@ public class PlayerInfo {
 		this.uuid = uuid;
 	}
 	
-	public Level lvlup() {
+	public Level lvlup(Player p) {
 		++lvl;
 		breaks = 0;
+		Health.setMaxHealth(p,Health.getMaxHealth(p) + (Oneblock.getlvl(p.getUniqueId()) * Level.multiplier));
 		return Level.get(lvl);
 	}
 	
